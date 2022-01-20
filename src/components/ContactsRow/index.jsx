@@ -32,10 +32,10 @@ const ContactsRow = ({ contacts }) => (
     <Table sx={{ minWidth: 650 }} aria-label="a dense table">
       <TableHead>
         <TableRow>
-          <TableCell align="left" />
+          <TableCell align="center" />
           <TableCell align="left">Name</TableCell>
-          <TableCell align="center">Email</TableCell>
-          <TableCell align="center">Phone</TableCell>
+          <TableCell align="left">Phone</TableCell>
+          <TableCell align="left">Address</TableCell>
           <TableCell align="center">Like</TableCell>
           <TableCell align="center">Edit</TableCell>
           <TableCell align="center">Delete</TableCell>
@@ -47,10 +47,10 @@ const ContactsRow = ({ contacts }) => (
             key={contact.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <Avatar align="left" avatar={contact.avatar} />
+            <Avatar align="center" avatar={contact.avatar} />
             <TableCell align="left">{contact.name}</TableCell>
-            <TableCell align="left">{contact.email}</TableCell>
             <TableCell align="left">{contact.phone}</TableCell>
+            <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
             <TableCell align="center"><StyledLikeIcon $favorite={contact.favorite} /></TableCell>
             <TableCell align="center"><StyledEditIcon /></TableCell>
             <TableCell align="center"><StyledTrashIcon /></TableCell>
