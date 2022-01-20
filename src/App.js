@@ -1,28 +1,19 @@
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import Theme from './styles/theme'
 import Header from './components/Header'
-import Container from './components/Container'
-import { getContacts } from './store/actions/contacts'
-import ContactsRow from './components/ContactsRow'
+import ContactsTable from './pages/ContactsTable'
+import ContactInner from './pages/ContactInner'
 
-const App = () => {
-  const dispatch = useDispatch()
-  const contacts = useSelector((state) => state.contacts)
-
-  useEffect(() => {
-    dispatch(getContacts())
-  }, [])
-
-  console.log(contacts.contacts)
-  return (
-    <Theme>
-      <Header logo="Contact List" title="Contacts" />
-      <Container>
-        <ContactsRow contacts={contacts.contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
-      </Container>
-    </Theme>
-  )
-}
+const App = () => (
+  <Theme>
+    <Header logo="Contact List" title="Contacts" />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={ContactsTable} exact />
+        <Route path="/:contactId" component={ContactInner} exact />
+      </Switch>
+    </BrowserRouter>
+  </Theme>
+)
 
 export default App

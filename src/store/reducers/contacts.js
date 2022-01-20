@@ -8,9 +8,9 @@ const initalStatuses = {
 const initialState = {
   contacts: [],
   getСontacts: initalStatuses,
-  createContact: initalStatuses,
+  // createContact: initalStatuses,
   editContact: initalStatuses,
-  deleteContact: initalStatuses,
+  // deleteContact: initalStatuses,
 }
 
 // eslint-disable-next-line
@@ -43,31 +43,31 @@ function reducer(state = initialState, action) {
         },
       }
 
-    case 'CREATE_CONTACT_SUCCESS':
-      return {
-        ...state,
-        createContact: {
-          ...initalStatuses,
-          success: true,
-        },
-      }
-    case 'CREATE_CONTACT_LOADING':
-      return {
-        ...state,
-        createContact: {
-          ...initalStatuses,
-          loading: true,
-        },
-      }
-    case 'CREATE_CONTACT_FAILED':
-      return {
-        ...state,
-        createContact: {
-          ...initalStatuses,
-          failed: true,
-          error: action.error,
-        },
-      }
+      // case 'CREATE_CONTACT_SUCCESS':
+      //   return {
+      //     ...state,
+      //     createContact: {
+      //       ...initalStatuses,
+      //       success: true,
+      //     },
+      //   }
+      // case 'CREATE_CONTACT_LOADING':
+      //   return {
+      //     ...state,
+      //     createContact: {
+      //       ...initalStatuses,
+      //       loading: true,
+      //     },
+      //   }
+      // case 'CREATE_CONTACT_FAILED':
+      //   return {
+      //     ...state,
+      //     createContact: {
+      //       ...initalStatuses,
+      //       failed: true,
+      //       error: action.error,
+      //     },
+      //   }
 
     case 'EDIT_CONTACT_SUCCESS':
       return {
@@ -95,31 +95,31 @@ function reducer(state = initialState, action) {
         },
       }
 
-    case 'DELETE_CONTACT_SUCCESS':
-      return {
-        ...state,
-        deleteContact: {
-          ...initalStatuses,
-          success: true,
-        },
-      }
-    case 'DELETE_CONTACT_LOADING':
-      return {
-        ...state,
-        deleteContact: {
-          ...initalStatuses,
-          loading: true,
-        },
-      }
-    case 'DELETE_CONTACT_FAILED':
-      return {
-        ...state,
-        deleteContact: {
-          ...initalStatuses,
-          failed: true,
-          error: action.error,
-        },
-      }
+    // case 'DELETE_CONTACT_SUCCESS':
+    //   return {
+    //     ...state,
+    //     deleteContact: {
+    //       ...initalStatuses,
+    //       success: true,
+    //     },
+    //   }
+    // case 'DELETE_CONTACT_LOADING':
+    //   return {
+    //     ...state,
+    //     deleteContact: {
+    //       ...initalStatuses,
+    //       loading: true,
+    //     },
+    //   }
+    // case 'DELETE_CONTACT_FAILED':
+    //   return {
+    //     ...state,
+    //     deleteContact: {
+    //       ...initalStatuses,
+    //       failed: true,
+    //       error: action.error,
+    //     },
+    //   }
     default:
       return state
   }
