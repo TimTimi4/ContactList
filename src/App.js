@@ -4,6 +4,7 @@ import Theme from './styles/theme'
 import Header from './components/Header'
 import Container from './components/Container'
 import { getContacts } from './store/actions/contacts'
+import ContactsRow from './components/ContactsRow'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -13,12 +14,12 @@ const App = () => {
     dispatch(getContacts())
   }, [])
 
-  console.log(contacts)
+  console.log(contacts.contacts)
   return (
     <Theme>
       <Header logo="Contact List" title="Contacts" />
       <Container>
-        <div>hi</div>
+        <ContactsRow contacts={contacts.contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
       </Container>
     </Theme>
   )

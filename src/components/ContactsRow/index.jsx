@@ -8,7 +8,12 @@ import Paper from '@mui/material/Paper'
 import styled from 'styled-components'
 import Trash from '../Icons/Trash'
 import Edit from '../Icons/Edit'
+import Like from '../Icons/Like'
 
+const StyledLikeIcon = styled(Like)`
+  color: ${({ theme, $favorite }) => ($favorite ? theme.colors.activeIcon : theme.colors.unactiveIcon)};
+  cursor: pointer;
+`
 const StyledEditIcon = styled(Edit)`
   color: ${({ theme }) => theme.colors.unactiveIcon};
   cursor: pointer;
@@ -18,27 +23,38 @@ const StyledTrashIcon = styled(Trash)`
   cursor: pointer;
 `
 
-const BooksRow = ({ contacts }) => (
+const Avatar = styled(TableCell)`
+  /* background-image: url(${({ avatar }) => (avatar)}); */
+`
+
+const ContactsRow = ({ contacts }) => (
   <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="a dense table">
       <TableHead>
         <TableRow>
-          <TableCell align="left">Book Name</TableCell>
-          <TableCell align="left">Author</TableCell>
+          <TableCell align="left" />
+          <TableCell align="left">Name</TableCell>
+          <TableCell align="center">Email</TableCell>
+          <TableCell align="center">Phone</TableCell>
           <TableCell align="center">Like</TableCell>
           <TableCell align="center">Edit</TableCell>
           <TableCell align="center">Delete</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {contacts.map((person) => (
+        {contacts.map((contact) => (
           <TableRow
-            key={person.id}
+            key={contact.id}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <TableCell align="left">{person.name}</TableCell>
+            <Avatar align="left" avatar={contact.avatar} />
+            <TableCell align="left">{contact.name}</TableCell>
+            <TableCell align="left">{contact.email}</TableCell>
+            <TableCell align="left">{contact.phone}</TableCell>
+            <TableCell align="center"><StyledLikeIcon $favorite={contact.favorite} /></TableCell>
             <TableCell align="center"><StyledEditIcon /></TableCell>
             <TableCell align="center"><StyledTrashIcon /></TableCell>
+
           </TableRow>
         ))}
       </TableBody>
@@ -46,4 +62,4 @@ const BooksRow = ({ contacts }) => (
   </TableContainer>
 )
 
-export default BooksRow
+export default ContactsRow

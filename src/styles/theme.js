@@ -8,7 +8,8 @@ const theme = {
       sidebar: '#EDEDED',
       primaryText: '#B1B1B1',
       secondaryText: '#EB434D',
-      Icon: '#B1B1B1',
+      unactiveIcon: '#B1B1B1',
+      activeIcon: '#EB434D',
     },
   sizes:
     {
