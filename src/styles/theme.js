@@ -24,8 +24,8 @@ const theme = {
         },
       fonts:
         {
-          maintitle: '40px',
-          subtitle: '20px',
+          maintitle: '30px',
+          subtitle: '25px',
           primaryText: '15px',
           btn: '20px',
         },
