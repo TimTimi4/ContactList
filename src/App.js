@@ -1,4 +1,4 @@
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { Route, BrowserRouter, Routes } from 'react-router-dom'
 import Theme from './styles/theme'
 import Header from './components/Header'
 import ContactsTable from './pages/ContactsTable'
@@ -8,10 +8,10 @@ const App = () => (
   <Theme>
     <Header logo="Contact List" title="Contacts" />
     <BrowserRouter>
-      <Switch>
-        <Route path="/" component={ContactsTable} exact />
-        <Route path="/:contactId" component={ContactInner} exact />
-      </Switch>
+      <Routes>
+        <Route exact path="/" element={<ContactsTable />} />
+        <Route path="/:id" element={<ContactInner />} />
+      </Routes>
     </BrowserRouter>
   </Theme>
 )

@@ -1,16 +1,16 @@
 import { useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import Container from '../../components/Container'
 
-const ContactInner = ({ match }) => {
+const ContactInner = () => {
   const contacts = useSelector((state) => state.contacts)
 
-  const contact = contacts.contacts.find((c) => c.id === match.params.contactId)
-  if (!contact) return <Redirect to="/404" />
-  const { name } = contact
+  const { id } = useParams()
+  const contact = contacts.contacts.find((p) => p.id === Number(id))
+  if (!contact) return <Navigate to="/404" />
   return (
     <Container>
-      {name}
+      {contact.name}
     </Container>
   )
 }
