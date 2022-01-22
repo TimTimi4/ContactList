@@ -6,18 +6,17 @@ import { getContacts } from '../../store/actions/contacts'
 
 const ContactsTable = () => {
   const dispatch = useDispatch()
-  const contacts = useSelector((state) => state.contacts)
+  const contacts = useSelector((state) => state.contacts.contacts)
 
   useEffect(() => {
-    if (contacts.contacts.length === 0) {
+    if (contacts.length === 0) {
       dispatch(getContacts())
     }
-    // eslint-disable-next-line
-  }, [])
+  }, [contacts.length, dispatch])
 
   return (
     <Container>
-      <ContactsRow contacts={contacts.contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
+      <ContactsRow contacts={contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
     </Container>
   )
 }

@@ -3,6 +3,7 @@ import Theme from './styles/theme'
 import Header from './components/Header'
 import ContactsTable from './pages/ContactsTable'
 import ContactInner from './pages/ContactInner'
+import NotFoundPage from './components/NotFoundPage'
 
 const App = () => (
   <Theme>
@@ -10,7 +11,8 @@ const App = () => (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<ContactsTable />} />
-        <Route path="/:id" element={<ContactInner />} />
+        <Route path="/contacts/:id" element={<ContactInner />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   </Theme>
