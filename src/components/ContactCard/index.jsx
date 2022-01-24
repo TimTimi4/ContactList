@@ -27,7 +27,7 @@ const ContactCard = ({ contact }) => (
       <Typography sx={{ mb: 1.5 }}>
         <FieldName>Name: </FieldName>{contact.name}
       </Typography>
-      {/* <Typography sx={{ mb: 1.5 }}>
+      <Typography sx={{ mb: 1.5 }}>
         <FieldName>Address: </FieldName>
         {contact.address.city}, {contact.address.country}, {contact.address.streetC}
       </Typography>
@@ -42,7 +42,7 @@ const ContactCard = ({ contact }) => (
       </Typography>
       <Typography sx={{ mb: 1.5 }}>
         <FieldName>User Name: </FieldName> {contact.username}
-      </Typography> */}
+      </Typography>
       <StyledLikeIcon $favorite={contact.favorite} />
     </Wrapper>
     <CardActions>

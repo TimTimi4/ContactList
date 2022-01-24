@@ -19,7 +19,7 @@ const StyledInfoIcon = styled(NavLink)`
   cursor: pointer;
 `
 
-const ContactsTable = ({ contacts }) => (
+const ContactsTable = ({ groups }) => (
   <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="a dense table">
       <TableHead>
@@ -31,25 +31,34 @@ const ContactsTable = ({ contacts }) => (
           <TableCell align="center">Like</TableCell>
         </TableRow>
       </TableHead>
-      <TableBody>
-        {contacts.map((contact) => (
-          <TableRow
-            key={contact.id}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
-            <TableCell align="left">{contact.name}</TableCell>
-            <TableCell align="left">{contact.phone}</TableCell>
-            <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
-            <TableCell align="center">
-              <StyledInfoIcon to={`/contacts/${contact.id}`}>
-                <Info />
-              </StyledInfoIcon>
-            </TableCell>
-            <TableCell align="center"><StyledLikeIcon $favorite={contact.favorite} /></TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
     </Table>
+    {groups.map((group) => (
+      <Table sx={{ minWidth: 650 }} aria-label="a dense table" key={group.letter}>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center">{group.letter}</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {group.list.map((contact) => (
+            <TableRow
+              key={contact.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell align="left">{contact.name}</TableCell>
+              <TableCell align="left">{contact.phone}</TableCell>
+              <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
+              <TableCell align="center">
+                <StyledInfoIcon to={`/contacts/${contact.id}`}>
+                  <Info />
+                </StyledInfoIcon>
+              </TableCell>
+              <TableCell align="center"><StyledLikeIcon $favorite={contact.favorite} /></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    ))}
   </TableContainer>
 )
 

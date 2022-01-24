@@ -13,6 +13,18 @@ const ModalForm = ({ contact }) => {
   const [open, setOpen] = React.useState(false)
   const [form, setForm] = React.useState({
     name: '',
+    address: {
+      country: '',
+      city: '',
+      streetC: '',
+    },
+    phone: '',
+    company: {
+      name: '',
+      bs: '',
+    },
+    email: '',
+    username: '',
   })
   const contacts = useSelector((state) => state.contacts.contacts)
 
@@ -27,6 +39,8 @@ const ModalForm = ({ contact }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
+    console.log(name)
+    console.log(value)
     setForm({
       ...form,
       [name]: value,
@@ -59,86 +73,86 @@ const ModalForm = ({ contact }) => {
             variant="standard"
             onChange={handleChange}
           />
-          {/* <TextField
+          <TextField
             margin="dense"
-            id="country"
             label="Country"
             name="country"
             type="text"
+            value={form.address.country}
             variant="standard"
             sx={{ width: '30%', marginRight: '10px' }}
-            onChange={handleChangeModalForm}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="city"
             label="City"
             name="city"
             type="text"
             variant="standard"
+            value={form.address.city}
             sx={{ width: '30%' }}
-            onChange={handleChangeModalForm}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="streetC"
             label="Street"
             name="streetC"
             type="text"
+            value={form.address.streetC}
             variant="standard"
             sx={{ width: '36%', marginLeft: '10px' }}
-            handleChangeModalForm={handleChangeModalForm}
+            handleChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="phone"
             name="phone"
             label="Phone"
             type="text"
             fullWidth
             variant="standard"
-            onChange={handleChangeModalForm}
+            value={form.phone}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="companyname"
             label="Company Name"
-            name="name"
+            name="companyName"
             type="text"
             variant="standard"
+            value={form.company.name}
             sx={{ width: '40%', marginRight: '10px' }}
-            onChange={handleChangeModalForm}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="bs"
             label="Description"
             name="bs"
+            value={form.company.bs}
             type="text"
             variant="standard"
             sx={{ width: '58%' }}
-            onChange={handleChangeModalForm}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="email"
             label="e-mail"
             type="email"
             name="email"
+            value={form.email}
             fullWidth
             variant="standard"
-            onChange={handleChangeModalForm}
+            onChange={handleChange}
           />
           <TextField
             margin="dense"
-            id="username"
             label="User Name"
             name="username"
             type="text"
+            value={form.username}
             fullWidth
             variant="standard"
-            onChange={handleChangeModalForm}
-          /> */}
+            onChange={handleChange}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

@@ -13,9 +13,22 @@ const Main = () => {
     }
   }, [contacts.length, dispatch])
 
+  const groupeContacts = (arr) => {
+    const group = {}
+    arr.forEach((el) => {
+      const letter = el.name[0].toLowerCase()
+      group[letter] = group[letter] ? group[letter].concat(el) : [el]
+    })
+    return Object.keys(group).map((letter) => ({
+      letter, list: group[letter].sort((a, b) => (a.name > b.name ? 1 : -1)),
+    }))
+  }
+
+  console.log(groupeContacts(contacts))
+
   return (
     <Container>
-      <ContactsTable contacts={contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
+      <ContactsTable groups={groupeContacts(contacts)} />
     </Container>
   )
 }
