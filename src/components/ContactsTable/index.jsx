@@ -15,13 +15,11 @@ const StyledLikeIcon = styled(Like)`
   cursor: pointer;
 `
 
-const StyledInfoLink = styled(NavLink)`
-  &:hover{
-    text-shadow: 0px 0px 8px #0000FF;
-  }
+const StyledInfoIcon = styled(NavLink)`
+  cursor: pointer;
 `
 
-const ContactsRow = ({ contacts }) => (
+const ContactsTable = ({ contacts }) => (
   <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="a dense table">
       <TableHead>
@@ -43,9 +41,9 @@ const ContactsRow = ({ contacts }) => (
             <TableCell align="left">{contact.phone}</TableCell>
             <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
             <TableCell align="center">
-              <StyledInfoLink to={`/contacts/${contact.id}`}>
+              <StyledInfoIcon to={`/contacts/${contact.id}`}>
                 <Info />
-              </StyledInfoLink>
+              </StyledInfoIcon>
             </TableCell>
             <TableCell align="center"><StyledLikeIcon $favorite={contact.favorite} /></TableCell>
           </TableRow>
@@ -55,4 +53,4 @@ const ContactsRow = ({ contacts }) => (
   </TableContainer>
 )
 
-export default ContactsRow
+export default ContactsTable

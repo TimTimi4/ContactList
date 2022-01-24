@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import ContactsRow from '../../components/ContactsRow'
+import ContactsTable from '../../components/ContactsTable'
 import Container from '../../components/Container'
 import { getContacts } from '../../store/actions/contacts'
 
-const ContactsTable = () => {
+const Main = () => {
   const dispatch = useDispatch()
   const contacts = useSelector((state) => state.contacts.contacts)
-
   useEffect(() => {
     if (contacts.length === 0) {
       dispatch(getContacts())
@@ -16,9 +15,9 @@ const ContactsTable = () => {
 
   return (
     <Container>
-      <ContactsRow contacts={contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
+      <ContactsTable contacts={contacts.sort((a, b) => (a.name > b.name ? 1 : -1))} />
     </Container>
   )
 }
 
-export default ContactsTable
+export default Main

@@ -4,10 +4,8 @@ import GlobalStyle from './global'
 const theme = {
   colors:
     {
-      header: '#E5E5E5',
-      sidebar: '#EDEDED',
       primaryText: '#B1B1B1',
-      secondaryText: '#EB434D',
+      secondaryText: '#1976d2',
       unactiveIcon: '#B1B1B1',
       activeIcon: '#EB434D',
     },

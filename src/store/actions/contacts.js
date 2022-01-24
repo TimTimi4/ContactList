@@ -9,3 +9,5 @@ export const getContacts = () => (dispatch) => {
       dispatch({ type: 'GET_CONTACTS_FAILED', error: 'error load CONTACTS' })
     })
 }
+
+export const editContact = (data) => ({ type: 'EDIT_CONTACT', data })
