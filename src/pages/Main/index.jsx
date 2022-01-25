@@ -7,6 +7,7 @@ import { getContacts } from '../../store/actions/contacts'
 const Main = () => {
   const dispatch = useDispatch()
   const contacts = useSelector((state) => state.contacts.contacts)
+
   useEffect(() => {
     if (contacts.length === 0) {
       dispatch(getContacts())

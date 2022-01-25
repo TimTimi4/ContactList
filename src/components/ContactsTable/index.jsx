@@ -34,6 +34,7 @@ const ContactsTable = ({ groups }) => {
 
   return (
     <TableContainer component={Paper}>
+
       {groups.map((group) => (
         <Table sx={{ minWidth: 650 }} aria-label="caption table" key={group.letter}>
           <caption style={{ captionSide: 'top', fontSize: '20px' }}>{group.letter.toUpperCase()}</caption>
