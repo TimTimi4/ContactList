@@ -39,11 +39,20 @@ const ModalForm = ({ contact }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    console.log(name)
-    console.log(value)
     setForm({
       ...form,
       [name]: value,
+    })
+  }
+
+  const handleChangeObjectField = (e, field) => {
+    const { name, value } = e.target
+    setForm({
+      ...form,
+      [field]: {
+        ...form[field],
+        [name]: value,
+      },
     })
   }
 
@@ -81,7 +90,7 @@ const ModalForm = ({ contact }) => {
             value={form.address.country}
             variant="standard"
             sx={{ width: '30%', marginRight: '10px' }}
-            onChange={handleChange}
+            onChange={(e) => handleChangeObjectField(e, 'address')}
           />
           <TextField
             margin="dense"
@@ -91,7 +100,7 @@ const ModalForm = ({ contact }) => {
             variant="standard"
             value={form.address.city}
             sx={{ width: '30%' }}
-            onChange={handleChange}
+            onChange={(e) => handleChangeObjectField(e, 'address')}
           />
           <TextField
             margin="dense"
@@ -101,7 +110,7 @@ const ModalForm = ({ contact }) => {
             value={form.address.streetC}
             variant="standard"
             sx={{ width: '36%', marginLeft: '10px' }}
-            handleChange={handleChange}
+            onChange={(e) => handleChangeObjectField(e, 'address')}
           />
           <TextField
             margin="dense"
@@ -116,12 +125,12 @@ const ModalForm = ({ contact }) => {
           <TextField
             margin="dense"
             label="Company Name"
-            name="companyName"
+            name="name"
             type="text"
             variant="standard"
             value={form.company.name}
             sx={{ width: '40%', marginRight: '10px' }}
-            onChange={handleChange}
+            onChange={(e) => handleChangeObjectField(e, 'company')}
           />
           <TextField
             margin="dense"
@@ -131,7 +140,7 @@ const ModalForm = ({ contact }) => {
             type="text"
             variant="standard"
             sx={{ width: '58%' }}
-            onChange={handleChange}
+            onChange={(e) => handleChangeObjectField(e, 'company')}
           />
           <TextField
             margin="dense"

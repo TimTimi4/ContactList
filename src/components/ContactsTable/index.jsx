@@ -19,47 +19,49 @@ const StyledInfoIcon = styled(NavLink)`
   cursor: pointer;
 `
 
-const ContactsTable = ({ groups }) => (
-  <TableContainer component={Paper}>
-    <Table sx={{ minWidth: 650 }} aria-label="a dense table">
-      <TableHead>
-        <TableRow>
-          <TableCell align="left">Name</TableCell>
-          <TableCell align="left">Phone</TableCell>
-          <TableCell align="left">Address</TableCell>
-          <TableCell align="center">Detailed Info</TableCell>
-          <TableCell align="center">Like</TableCell>
-        </TableRow>
-      </TableHead>
-    </Table>
-    {groups.map((group) => (
-      <Table sx={{ minWidth: 650 }} aria-label="a dense table" key={group.letter}>
-        <TableHead>
-          <TableRow>
-            <TableCell align="center">{group.letter}</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {group.list.map((contact) => (
-            <TableRow
-              key={contact.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell align="left">{contact.name}</TableCell>
-              <TableCell align="left">{contact.phone}</TableCell>
-              <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
-              <TableCell align="center">
-                <StyledInfoIcon to={`/contacts/${contact.id}`}>
-                  <Info />
-                </StyledInfoIcon>
-              </TableCell>
-              <TableCell align="center"><StyledLikeIcon $favorite={contact.favorite} /></TableCell>
+const ContactsTable = ({ groups }) => {
+  console.log(groups)
+
+  return (
+    <TableContainer component={Paper}>
+      {groups.map((group) => (
+        <Table sx={{ minWidth: 650 }} aria-label="caption table" key={group.letter}>
+          <caption style={{ captionSide: 'top', fontSize: '20px' }}>{group.letter.toUpperCase()}</caption>
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">Phone</TableCell>
+              <TableCell align="left">Address</TableCell>
+              <TableCell align="center">Detailed Info</TableCell>
+              <TableCell align="center">Like</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    ))}
-  </TableContainer>
-)
+          </TableHead>
+          <TableBody>
+            {group.list.map((contact) => (
+              <TableRow
+                key={contact.id}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell align="left">{contact.name}</TableCell>
+                <TableCell align="left">{contact.phone}</TableCell>
+                <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
+                <TableCell align="center">
+                  <StyledInfoIcon to={`/contacts/${contact.id}`}>
+                    <Info />
+                  </StyledInfoIcon>
+                </TableCell>
+                <TableCell align="center">
+                  <StyledLikeIcon
+                    $favorite={contact.favorite}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ))}
+    </TableContainer>
+  )
+}
 
 export default ContactsTable

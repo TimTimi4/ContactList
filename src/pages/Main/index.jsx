@@ -24,11 +24,9 @@ const Main = () => {
     }))
   }
 
-  console.log(groupeContacts(contacts))
-
   return (
     <Container>
-      <ContactsTable groups={groupeContacts(contacts)} />
+      <ContactsTable groups={groupeContacts(contacts)} contacts={contacts} />
     </Container>
   )
 }
