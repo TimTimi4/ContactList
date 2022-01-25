@@ -7,8 +7,10 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import Like from '../Icons/Like'
 import Info from '../Icons/Info'
+import { editContact } from '../../store/actions/contacts'
 
 const StyledLikeIcon = styled(Like)`
   color: ${({ theme, $favorite }) => ($favorite ? theme.colors.activeIcon : theme.colors.unactiveIcon)};
@@ -20,7 +22,15 @@ const StyledInfoIcon = styled(NavLink)`
 `
 
 const ContactsTable = ({ groups }) => {
-  console.log(groups)
+  const dispatch = useDispatch()
+  const contacts = useSelector((state) => state.contacts.contacts)
+
+  const handleClickLikeIcon = (contact) => {
+    dispatch(editContact(contacts.map((c) => {
+      if (contact.id === c.id) return { ...contact, favorite: !contact.favorite }
+      return c
+    })))
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -53,6 +63,7 @@ const ContactsTable = ({ groups }) => {
                 <TableCell align="center">
                   <StyledLikeIcon
                     $favorite={contact.favorite}
+                    onClick={() => handleClickLikeIcon(contact)}
                   />
                 </TableCell>
               </TableRow>
