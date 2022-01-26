@@ -1,12 +1,13 @@
 import * as React from 'react'
 import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogTitle from '@mui/material/DialogTitle'
 import { useDispatch, useSelector } from 'react-redux'
+import TextField from '@mui/material/TextField'
 import { editContact } from '../../store/actions/contacts'
+import { StyledFields } from './styled'
 
 const ModalForm = ({ contact }) => {
   const dispatch = useDispatch()
@@ -82,7 +83,7 @@ const ModalForm = ({ contact }) => {
             variant="standard"
             onChange={handleChange}
           />
-          <TextField
+          <StyledFields
             margin="dense"
             label="Country"
             name="country"
@@ -92,7 +93,7 @@ const ModalForm = ({ contact }) => {
             sx={{ width: '30%', marginRight: '10px' }}
             onChange={(e) => handleChangeObjectField(e, 'address')}
           />
-          <TextField
+          <StyledFields
             margin="dense"
             label="City"
             name="city"
@@ -102,7 +103,7 @@ const ModalForm = ({ contact }) => {
             sx={{ width: '30%' }}
             onChange={(e) => handleChangeObjectField(e, 'address')}
           />
-          <TextField
+          <StyledFields
             margin="dense"
             label="Street"
             name="streetC"
@@ -122,7 +123,7 @@ const ModalForm = ({ contact }) => {
             value={form.phone}
             onChange={handleChange}
           />
-          <TextField
+          <StyledFields
             margin="dense"
             label="Company Name"
             name="name"
@@ -132,7 +133,7 @@ const ModalForm = ({ contact }) => {
             sx={{ width: '40%', marginRight: '10px' }}
             onChange={(e) => handleChangeObjectField(e, 'company')}
           />
-          <TextField
+          <StyledFields
             margin="dense"
             label="Description"
             name="bs"

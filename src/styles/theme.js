@@ -4,7 +4,6 @@ import GlobalStyle from './global'
 const theme = {
   colors:
     {
-      primaryText: '#B1B1B1',
       secondaryText: '#1976d2',
       unactiveIcon: '#B1B1B1',
       activeIcon: '#EB434D',
@@ -14,19 +13,11 @@ const theme = {
       blocks:
         {
           container: '930px',
-          modalwindow: '340px',
-          button: '120px',
-        },
-      elems:
-        {
-          icons: '40px',
         },
       fonts:
         {
           maintitle: '30px',
           subtitle: '25px',
-          primaryText: '15px',
-          btn: '20px',
         },
     },
   fonts:

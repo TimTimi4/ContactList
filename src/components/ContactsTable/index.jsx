@@ -1,25 +1,19 @@
-import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import Like from '../Icons/Like'
 import Info from '../Icons/Info'
 import { editContact } from '../../store/actions/contacts'
-
-const StyledLikeIcon = styled(Like)`
-  color: ${({ theme, $favorite }) => ($favorite ? theme.colors.activeIcon : theme.colors.unactiveIcon)};
-  cursor: pointer;
-`
-
-const StyledInfoIcon = styled(NavLink)`
-  cursor: pointer;
-`
+import {
+  StyledLikeIcon,
+  StyledInfoIcon,
+  StyledTable,
+  TableCellTablet,
+  TableCellMobileM,
+} from './styled'
 
 const ContactsTable = ({ groups }) => {
   const dispatch = useDispatch()
@@ -36,13 +30,13 @@ const ContactsTable = ({ groups }) => {
     <TableContainer component={Paper}>
 
       {groups.map((group) => (
-        <Table sx={{ minWidth: 650 }} aria-label="caption table" key={group.letter}>
+        <StyledTable sx={{ minWidth: 650 }} aria-label="caption table" key={group.letter}>
           <caption style={{ captionSide: 'top', fontSize: '20px' }}>{group.letter.toUpperCase()}</caption>
           <TableHead>
             <TableRow>
               <TableCell align="left">Name</TableCell>
-              <TableCell align="left">Phone</TableCell>
-              <TableCell align="left">Address</TableCell>
+              <TableCellMobileM align="left">Phone</TableCellMobileM>
+              <TableCellTablet align="left">Address</TableCellTablet>
               <TableCell align="center">Detailed Info</TableCell>
               <TableCell align="center">Like</TableCell>
             </TableRow>
@@ -54,8 +48,8 @@ const ContactsTable = ({ groups }) => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell align="left">{contact.name}</TableCell>
-                <TableCell align="left">{contact.phone}</TableCell>
-                <TableCell align="left">{contact.address.city}, {contact.address.country}</TableCell>
+                <TableCellMobileM align="left">{contact.phone}</TableCellMobileM>
+                <TableCellTablet align="left">{contact.address.city}, {contact.address.country}</TableCellTablet>
                 <TableCell align="center">
                   <StyledInfoIcon to={`/contacts/${contact.id}`}>
                     <Info />
@@ -70,7 +64,7 @@ const ContactsTable = ({ groups }) => {
               </TableRow>
             ))}
           </TableBody>
-        </Table>
+        </StyledTable>
       ))}
     </TableContainer>
   )

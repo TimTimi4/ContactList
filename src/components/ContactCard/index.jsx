@@ -1,25 +1,13 @@
 import * as React from 'react'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
-import styled from 'styled-components'
 import ModalForm from '../ModalForm'
-import Like from '../Icons/Like'
-
-const Wrapper = styled(CardContent)`
-  position: relative;
-`
-
-const FieldName = styled.span`
-  color: ${({ theme }) => theme.colors.secondaryText};
-`
-const StyledLikeIcon = styled(Like)`
-  color: ${({ theme, $favorite }) => ($favorite ? theme.colors.activeIcon : theme.colors.unactiveIcon)};
-  position: absolute;
-  top: 20px;
-  right: 20px;
-`
+import {
+  Wrapper,
+  FieldName,
+  StyledLikeIcon,
+} from './styled'
 
 const ContactCard = ({ contact }) => (
   <Card sx={{ minWidth: 275 }}>
