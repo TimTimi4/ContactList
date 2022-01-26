@@ -3,5 +3,4 @@ import contacts from './contacts'
 
 export default combineReducers({
   contacts,
-
 })

@@ -1,3 +1,10 @@
+import {
+  GET_CONTACTS_SUCCESS,
+  GET_CONTACTS_LOADING,
+  GET_CONTACTS_FAILED,
+  EDIT_CONTACT,
+} from '../constants'
+
 const initalStatuses = {
   success: false,
   loading: false,
@@ -10,10 +17,9 @@ const initialState = {
   getСontacts: initalStatuses,
 }
 
-// eslint-disable-next-line
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'GET_CONTACTS_SUCCESS':
+    case GET_CONTACTS_SUCCESS:
       return {
         ...state,
         contacts: action.data,
@@ -22,7 +28,7 @@ function reducer(state = initialState, action) {
           success: true,
         },
       }
-    case 'GET_CONTACTS_LOADING':
+    case GET_CONTACTS_LOADING:
       return {
         ...state,
         getСontacts: {
@@ -30,7 +36,7 @@ function reducer(state = initialState, action) {
           loading: true,
         },
       }
-    case 'GET_CONTACTS_FAILED':
+    case GET_CONTACTS_FAILED:
       return {
         ...state,
         getСontacts: {
@@ -39,7 +45,7 @@ function reducer(state = initialState, action) {
           error: action.error,
         },
       }
-    case 'EDIT_CONTACT':
+    case EDIT_CONTACT:
       return {
         ...state,
         contacts: action.data,

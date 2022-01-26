@@ -35,6 +35,7 @@
     "rules": {
       "function-paren-newline": "off",
       "object-curly-newline": "off",
+      "default-param-last": "off",
       "semi": [
         "error",
         "never"

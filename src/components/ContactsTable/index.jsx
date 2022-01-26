@@ -1,12 +1,12 @@
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { useSelector, useDispatch } from 'react-redux'
 import Info from '../Icons/Info'
 import { editContact } from '../../store/actions/contacts'
+import Head from './Head'
 import {
   StyledLikeIcon,
   StyledInfoIcon,
@@ -32,15 +32,7 @@ const ContactsTable = ({ groups }) => {
       {groups.map((group) => (
         <StyledTable sx={{ minWidth: 650 }} aria-label="caption table" key={group.letter}>
           <caption style={{ captionSide: 'top', fontSize: '20px' }}>{group.letter.toUpperCase()}</caption>
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Name</TableCell>
-              <TableCellMobileM align="left">Phone</TableCellMobileM>
-              <TableCellTablet align="left">Address</TableCellTablet>
-              <TableCell align="center">Detailed Info</TableCell>
-              <TableCell align="center">Like</TableCell>
-            </TableRow>
-          </TableHead>
+          <Head />
           <TableBody>
             {group.list.map((contact) => (
               <TableRow

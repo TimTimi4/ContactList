@@ -8,13 +8,12 @@ import NotFoundPage from './components/NotFoundPage'
 import CircularUnderLoad from './components/Loader'
 
 const App = () => {
-  const contactsState = useSelector((state) => state.contacts)
+  const { failed, loading } = useSelector((state) => state.contacts.getСontacts)
   return (
     <Theme>
       <Header logo="Contact List" title="Contacts" />
-      {(contactsState.getСontacts.success === false
-        && contactsState.getСontacts.loading === true) && <CircularUnderLoad /> }
-      { (contactsState.getСontacts.failed === true) && <NotFoundPage /> }
+      {loading && <CircularUnderLoad /> }
+      { failed && <NotFoundPage /> }
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Main />} />
